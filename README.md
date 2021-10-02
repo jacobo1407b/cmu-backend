@@ -4,5 +4,6 @@ Centro Medico Universitario (backend)
 
 Install dependency:
 
-```yarn install
+```bash
+yarn install
 ```
