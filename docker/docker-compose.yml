@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: "3"
+services:
+  postgres:
+    image: postgres:13
+    container_name: centro-medico
+    restart: on-failure
+    environment:
+      POSTGRES_DB: cmu
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234567890
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    network_mode: "host"
+
+volumes:
+  postgres_data:
+    driver: local
