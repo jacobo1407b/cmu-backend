@@ -6,7 +6,7 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express'
 import {swaggerOptions} from 'docs/swagger';
 //import router
-import hola from 'routes/index';
+import createRouter from "routes";
 
 const app = express();
 const port = parseInt(process.env.PORT!) || 3000
@@ -20,7 +20,7 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions(port));
 //rutas
 
 app.use('/docs', swaggerUi.serve,swaggerUi.setup(swaggerDocs))
-app.use('/api/v1',hola)
+createRouter(app)
 //err
 app.use(middlewares.errorHandler);
 app.use(middlewares.notFoundHandler);

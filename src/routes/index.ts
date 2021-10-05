@@ -1,18 +1,9 @@
-import express from "express";
+import {Application} from 'express';
+import hola from './auth.router';
+const api = '/api/v1';
 
-const router = express.Router();
+function createRouter(app:Application){
+    app.use(`${api}/auth`,hola)
+}
 
-
-/**
- * @swagger
- * /api/v1/hola:
- *   get:
- *       summary: Get hola
- *       description: mostrar si funciona
- * 
- */
-router.get('/hola', (req, res) => {
-    res.send('<h1>works</h1>')
-});
-
-export default router;
+export default createRouter;
