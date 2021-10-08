@@ -16,7 +16,6 @@ const app = express();
 const port = parseInt(process.env.PORT!) || 3000
 
 //settings
-config();
 useLoaders(app, port);
 const swaggerDocs = swaggerJsDoc(swaggerOptions(port));
 //rutas
