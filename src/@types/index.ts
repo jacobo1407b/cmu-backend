@@ -5,8 +5,8 @@ export enum Role {
 }
 
 export enum Sexo {
-    "M",
-    "F"
+    m="M",
+    f="F"
 }
 
 export type Carrera = {
@@ -21,7 +21,7 @@ export type User = {
     a_materno: string,
     sexo: Sexo,
     correo: string,
-    role: Role,
+    role?: Role,
     url?: string,
     name_image?: string
     carrera?: number
@@ -32,7 +32,7 @@ export type Peticion = {
     estado: boolean
 }
 // solicitante referencia a "amigo" XD
-export type SOlicitud = {
+export type Solicitud = {
     ubicacion: string,
     causas: string,
     solicitante: boolean,
