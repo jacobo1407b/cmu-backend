@@ -5,8 +5,8 @@ export enum Role {
 }
 
 export enum Sexo {
-    m="M",
-    f="F"
+    m = "M",
+    f = "F"
 }
 
 export type Carrera = {
@@ -14,6 +14,7 @@ export type Carrera = {
     abreviatura: string
 }
 export type User = {
+    id:number | null
     matricula: string,
     nombre: string,
     password: string,
@@ -41,4 +42,19 @@ export type Solicitud = {
     fecha: number | Date,
     id_per_medico: number,
     id_usuario: number
+}
+
+export type Re = {
+    error: boolean,
+    msg: string,
+    data: User | null | unknown
+}
+
+export type Payload = {
+    sub: string | number | null,
+    exp: number | Date,
+    username: string,
+    matricula: string,
+    email:string,
+    role?:Role
 }
