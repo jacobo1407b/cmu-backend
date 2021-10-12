@@ -1,5 +1,5 @@
 # cmu-backend
-Centro Medico Universitario (backend)
+Centro Medico Universitario (backend), Typescript, PostgresDB, REST API
 ## Getting Started
 
 Install dependency:
