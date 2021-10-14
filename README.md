@@ -10,7 +10,7 @@ yarn install
 Initialize database:
 
 ```bash
-yarn init
+yarn init-db
 ```
 Create a ".env" file and add the following variables:
 ```bash
