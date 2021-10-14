@@ -3,7 +3,7 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
-      - yarn && yarn cache clean --force
+      - yarn install
   build:
     commands:
       - echo Build started on `date`
