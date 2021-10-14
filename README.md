@@ -1,5 +1,5 @@
 # cmu-backend
-Centro Medico Universitario (backend)
+Centro Medico Universitario (backend), Typescript, PostgresDB, REST API
 ## Getting Started
 
 Install dependency:
@@ -10,7 +10,7 @@ yarn install
 Initialize database:
 
 ```bash
-yarn init
+yarn init-db
 ```
 Create a ".env" file and add the following variables:
 ```bash
