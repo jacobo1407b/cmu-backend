@@ -23,7 +23,7 @@ async function initUser() {
     const has = await encryptPassword('1234567890')
     const values = [mongoid(),
         '20182iti011',
-        `'${has}'`,
+        `${has}`,
         '',
         '',
         'Jacobo Rodrigo',
@@ -36,7 +36,8 @@ async function initUser() {
     pg
         .query(text, values)
         .then(res => {
-            console.log(res)
+            console.log(res);
+            process.exit()
         })
         .catch(e => {
             throw e

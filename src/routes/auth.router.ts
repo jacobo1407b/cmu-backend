@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-router.get('/login',auth);
+router.post('/login',auth);
 router.post('/create-admin',createAdm);
 router.post('/create-alum',createAlum);
 router.post('/create-enf',createEnferm);
