@@ -7,8 +7,8 @@ services:
     restart: on-failure
     environment:
       POSTGRES_DB: cmu
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: 1234567890
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: 1986
     volumes:
       - postgres_data:/var/lib/postgresql/data
     network_mode: "host"

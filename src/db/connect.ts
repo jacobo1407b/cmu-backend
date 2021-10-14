@@ -8,8 +8,8 @@ export function connectDB() {
     const pgConf: any = {
         user: process.env.DB_USER || "dev",
         host: process.env.DB_HOST || "localhost",
-        database: process.env.DB_NAME || "dev",
-        password: process.env.DB_PASSWORD || "1234567890",
+        database: process.env.DB_NAME || "cmu",
+        password: process.env.DB_PASSWORD || "1986",
         port: process.env.DB_PORT || 5432
     };
     pg = new Pool(pgConf);
