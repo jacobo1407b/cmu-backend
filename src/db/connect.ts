@@ -1,10 +1,13 @@
 import { Pool } from 'pg';
 import chalk from 'chalk';
-
+import {config} from 'dotenv';
 
 export let pg: Pool;
 
 export function connectDB() {
+    if(process.env.NODE_ENV === "test"){
+        config();
+    }
     const pgConf: any = {
         user: process.env.DB_USER || "dev",
         host: process.env.DB_HOST || "localhost",

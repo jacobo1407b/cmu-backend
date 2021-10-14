@@ -1,5 +1,6 @@
 import { pg, connectDB } from './connect';
-import {encryptPassword} from '../utils/hash'
+import {encryptPassword} from '../utils/hash';
+import chalk from 'chalk';
 const mongoid = require('mongoid-js')
 connectDB();
 const text = `
@@ -36,7 +37,7 @@ async function initUser() {
     pg
         .query(text, values)
         .then(res => {
-            console.log(res);
+            console.log(chalk.blue('INFO: ')+chalk.blue('20182iti011 has been initialize'));
             process.exit()
         })
         .catch(e => {
