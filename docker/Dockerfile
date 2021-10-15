@@ -12,8 +12,10 @@ FROM node:14-alpine
 WORKDIR /app
 COPY --from=builder package.json tsconfig.json yarn.lock ./
 COPY --from=builder build/ ./build
+COPY ./src/db/cmu_db.sql  ./build/db/
+COPY ./src/db/initSchema.sql ./build/db/
 COPY --from=builder node_modules/ ./node_modules
 
 EXPOSE 3000
-ENTRYPOINT [ "yarn", "start"]
-CMD [ "yarn start" ]
+ENTRYPOINT [ "yarn", "start:dev"]
+CMD [ "yarn start:dev" ]

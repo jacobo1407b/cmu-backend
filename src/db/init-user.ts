@@ -1,8 +1,8 @@
-import { pg, connectDB } from './connect';
+import {Pool} from 'pg'
 import {encryptPassword} from '../utils/hash';
 import chalk from 'chalk';
 const mongoid = require('mongoid-js')
-connectDB();
+
 const text = `
 INSERT INTO df.users (
     id_usuario,
@@ -18,9 +18,9 @@ INSERT INTO df.users (
     role
 ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
 `
-setTimeout(initUser, 7000);
 
-async function initUser() {
+
+export async function initUser(pg:Pool) {
     const has = await encryptPassword('1234567890')
     const values = [mongoid(),
         '20182iti011',
@@ -34,13 +34,6 @@ async function initUser() {
         'Masculino',
         'Admin'
     ]
-    pg
-        .query(text, values)
-        .then(res => {
-            console.log(chalk.blue('INFO: ')+chalk.blue('20182iti011 has been initialize'));
-            process.exit()
-        })
-        .catch(e => {
-            throw e
-        })
+    await pg.query(text, values);
+    console.log(chalk.blue('INFO: ')+chalk.blue('20182iti011 has been initialize'));
 }
