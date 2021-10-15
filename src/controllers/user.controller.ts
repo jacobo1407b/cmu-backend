@@ -11,7 +11,7 @@ export function auth(req: Request, res: Response, next: NextFunction) {
             next(new Error404('username or password not correct.'))
         }else{
             const payload:Payload ={
-                sub:user.id,
+                sub:user.id_usuario!,
                 exp: Date.now()+400000,
                 username:`${user.nombre} ${user.a_paterno} ${user.a_materno}`,
                 email:user.correo,
@@ -28,7 +28,7 @@ export function auth(req: Request, res: Response, next: NextFunction) {
             })
         }
     })(req, res, next)
-}
+}//si
 
 export async function createAdm(req: Request, res: Response, next: NextFunction) {
     try {
@@ -37,7 +37,7 @@ export async function createAdm(req: Request, res: Response, next: NextFunction)
     } catch (err) {
         res.status(500).json(err)
     }
-}
+}//si
 
 export async function createAlum(req: Request, res: Response, next: NextFunction) {
     try {
@@ -46,7 +46,7 @@ export async function createAlum(req: Request, res: Response, next: NextFunction
     } catch (error) {
         res.status(500).json(error)
     }
-}
+}//si
 
 export async function createEnferm(req: Request, res: Response, next: NextFunction) {
     try {
@@ -55,23 +55,25 @@ export async function createEnferm(req: Request, res: Response, next: NextFuncti
     } catch (error) {
         res.status(500).json(error)
     }
-}
+}//si
 
-export async function getUser(req: Request, res: Response, next: NextFunction) {
+export async function getUser(req: any, res: Response, next: NextFunction) {
+    const userid = req.user.sub
     try {
-        const resp = await user.getById(req.params.id)
+        const resp = await user.getById(userid)
+        resp.password =""
         res.status(200).json(resp)
     } catch (error) {
         res.status(500).json(error)
     }
-}
+}//si
 
 export async function updateUser(req: Request, res: Response, next: NextFunction) {
     try {
-        var id = parseInt(req.params.id)
+        var id = req.params.id
         const resp = await user.updateUser(id, req.body)
         res.status(200).json(resp)
     } catch (error) {
         res.status(500).json(error)
     }
-}
+}//si

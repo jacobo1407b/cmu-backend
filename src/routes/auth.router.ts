@@ -1,16 +1,17 @@
 import express from "express";
 import {auth,createAdm,createAlum,createEnferm, getUser} from 'controllers/user.controller';
 import {updateUser} from 'controllers/user.controller';
+import {middlewares} from 'middleware'
 const router = express.Router();
 
 
 
-router.post('/login',auth);
-router.post('/create-admin',createAdm);
-router.post('/create-alum',createAlum);
-router.post('/create-enf',createEnferm);
-router.get('/get/:id',getUser);
-router.put('/update-user:id',updateUser)
+/*si*/router.post('/login',auth);
+/*si*/router.post('/create-admin',middlewares.ensureAuthenticatedAdmin,createAdm);
+/*si*/router.post('/create-alum',middlewares.ensureAuthenticatedAdmin,createAlum);
+/*si*/router.post('/create-enf',middlewares.ensureAuthenticatedAdmin,createEnferm);
+/*si*/router.get('/get',middlewares.ensureAuthenticated,getUser);
+/*si*/router.put('/update-user/:id',middlewares.ensureAuthenticatedAdmin,updateUser)
 
 
 export default router
