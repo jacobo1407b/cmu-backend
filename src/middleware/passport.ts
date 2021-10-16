@@ -30,6 +30,5 @@ let opts:StrategyOptions  = {
 };
 
 passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    console.log(jwt_payload);
     done(null,jwt_payload)
 }));
