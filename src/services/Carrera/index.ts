@@ -11,6 +11,16 @@ class Carreras{
             });
         });
     }
+    getCarreraId(id?:string):Promise<Carrera>{
+        const text:string = 'SELECT * FROM df.carrera WHERE id_carrera=$1';
+        const values = [id];
+        return new Promise((resolve,reject)=>{
+            pg.query(text,values,function(err,result){
+                if(err)reject(err);
+                resolve(result.rows[0]);
+            });
+        });
+    }
 }
 
 export default new Carreras();

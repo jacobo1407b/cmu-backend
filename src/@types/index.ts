@@ -23,15 +23,16 @@ export type User = {
     id_usuario?:string
     matricula: string,
     nombre: string,
-    password: string,
+    password: any,
     a_paterno: string,
     a_materno: string,
     genero: Sexo,
     correo: string,
     role?: Role,
     url?: string,
-    name_image?: string
-    id_carrera?: string
+    name_image?: string,
+    id_carrera?: string,
+    carrera?:Carrera | null
 }
 
 export type Peticion = {

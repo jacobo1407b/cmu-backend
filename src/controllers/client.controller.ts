@@ -10,7 +10,7 @@ export async function updateMatricula(req: Request, res: Response, next: NextFun
         
         if (!validar) {
             const upda = await client.updateMatricula(newmatricula, id);
-            upda.password=""
+            delete upda.password
             res.status(200).json({
                 error: false,
                 msg: "Matricula actualizada",
