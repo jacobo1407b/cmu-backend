@@ -55,16 +55,7 @@ export default class UserQuery extends Hash {
         })
     }//si
 
-    updateImage(id: number, url: string, nameImg: string) {
-        const text = "UPDATE df.users SET url=$1,name_image=$2 WHERE id=$3"
-        const values = [url, nameImg, id];
-        return pg
-            .query(text, values)
-            .then(res => {
-                res.rows[0]
-            })
-            .catch(e => e.stack)
-    }
+    
     delete(id: number) {
         const text = "DELETE df.users WHERE id=$1"
         const values = [id];
@@ -84,5 +75,5 @@ export default class UserQuery extends Hash {
                 res.rows[0]
             })
             .catch(e => e.stack)
-    }
+    }//si
 }

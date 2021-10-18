@@ -28,6 +28,16 @@ class Client extends Hash {
             });
         })
     }//si
+    updateImage(id: string, url: string, nameImg?: string): Promise<User> {
+        const text = "UPDATE df.users SET url=$1,name_image=$2 WHERE id_usuario=$3 RETURNING *"
+        const values = [url, nameImg, id];
+        return new Promise((resolve,reject)=>{
+            pg.query(text,values,function(err,result){
+                if(err) reject(err)
+                resolve(result.rows[0])
+            })
+        });
+    }
 }
 
 export default new Client();
