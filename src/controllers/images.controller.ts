@@ -3,13 +3,13 @@ import strorage from 'services/Cloudinary';
 import client from 'services/Client';
 import user from 'services/User/user.service';
 
-export async function addImage(req: any, res: Response, next: NextFunction) {
+export async function addImage(req: any ,res: Response, next: NextFunction) {
     try {
-        if (req.file.size < 2000000) {
-            const id: string = req.user.sub
+        if (req.file?.size! < 2000000) {
+            const id:any = req.user?.sub!
             const userData = await user.getById(id);
-            const file: string = req.file.buffer.toString('base64');
-            const typeImg: string = req.file.mimetype;
+            const file: any = req.file?.buffer.toString('base64');
+            const typeImg: any = req.file?.mimetype;
             if (userData.url === "") {
                 const add = await strorage.uploadImage(file, typeImg);
                 const resolve = await client.updateImage(id, add.upload.secure_url, add.name);

@@ -14,7 +14,37 @@ export let middlewares = {
             if (err) {
                 return next(err);
             }
-            if (user.role != 'Admin') {
+            if (user.role != 'Admin' || !user) {
+                return next(new Error403("no tienes acceso."));
+            }
+            req.user = user;
+            next();
+        })(req, res, next);
+    },
+    ensureAuthenticatedEnfer: (req: Request, res: Response, next: NextFunction) => {
+        passport.authenticate('jwt', { session: false }, (err, user, info) => {
+            if (info) {
+                return next(new Error401(info.message));
+            }
+            if (err) {
+                return next(err);
+            }
+            if (user.role != 'Enfermero' || !user) {
+                return next(new Error403("no tienes acceso."));
+            }
+            req.user = user;
+            next();
+        })(req, res, next);
+    },
+    ensureAuthenticatedAlumn: (req: Request, res: Response, next: NextFunction) => {
+        passport.authenticate('jwt', { session: false }, (err, user, info) => {
+            if (info) {
+                return next(new Error401(info.message));
+            }
+            if (err) {
+                return next(err);
+            }
+            if (user.role != 'Alumno' || !user) {
                 return next(new Error403("no tienes acceso."));
             }
             req.user = user;
