@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt,{JwtPayload} from 'jsonwebtoken';
+import jwt  from 'jsonwebtoken';
 import passport from 'passport';
 import user from 'services/User/user.service';
 import Error404 from 'services/Error/Error404';

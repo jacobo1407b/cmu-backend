@@ -10,7 +10,7 @@
         "build": "rm -rf build/  && tsc",
         "init-db": "NODE_PATH=./build ts-node src/db/index.ts",
         "eslint": "eslint",
-        "test": "NODE_ENV=test NODE_PATH=./src jest"
+        "test": "NODE_ENV=test NODE_PATH=./src jest --detectOpenHandles"
     },
     "dependencies": {
         "bcryptjs": "^2.4.3",

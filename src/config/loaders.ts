@@ -4,14 +4,14 @@ import helmet from 'helmet';
 import cors from 'cors'
 import morgan from 'morgan';
 import passport from "passport";
-import {connectDB} from 'db/connect';
+import {DB} from 'db/connect';
 
 
 export default function useLoaders(app: Application,port:number) {
     //setings
     app.set('port', port);
     app.set('json spaces', 2);
-    connectDB()
+    new DB()
     require('middleware/passport');
     new Cloud();
     //middleware
