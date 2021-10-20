@@ -1,4 +1,4 @@
-export const serverTest:string = "http://localhost:3000";
+export const serverTest:string = "http://localhost:3001";
 export const body = {
     matricula: "20182iti011",
     password: "1234567890"
@@ -43,5 +43,6 @@ export const bodyUpdate = {
     "correo": "jacobohernandezmendieta7@gmail.com",
     "id_carrera": null
 }
-export const token = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTZjYzVjY2RjYzhiMTM1YWQwMDAwMDEiLCJleHAiOjE2MzQ1MjMwNDcyNTIsInVzZXJuYW1lIjoiSmFjb2JvIEhlcm5hbmRleiBNZW5kaWV0YSIsImVtYWlsIjoiamFjb2JvaGVybmFuZGV6bWVuZGlldGE3QGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsIm1hdHJpY3VsYSI6IjIwMTgyaXRpMDExIn0.LIY0oCCQaQlAT9KxLrsepohXvPtc470DZmNokJxDSKU"
-export const tokenALumno = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTZjZGEwNmJiMTAwOTQyZGQwMDAwMDEiLCJleHAiOjE2MzQ1MjQwNjM2MTksInVzZXJuYW1lIjoiQ2VzYXIgTGltYSBJcGF0emkiLCJlbWFpbCI6ImNlc2FyQGdtYWlsLmNvbSIsInJvbGUiOiJBbHVtbm8iLCJtYXRyaWN1bGEiOiIyMDE4Mml0aTA5MSJ9.ack6q9WJS916MBiKLafLKfnd6AgZCTsM3IKk-yhVP0c"
+//616f76426dcf705499000001
+export const token = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTZmNzY0MjZkY2Y3MDU0OTkwMDAwMDEiLCJleHAiOjE2MzQ2OTUzNDU5ODAsInVzZXJuYW1lIjoiSmFjb2JvIFJvZHJpZ28gSGVybmFuZGV6IE1lbmRpZXRhIiwiZW1haWwiOiJqYWNvYm9oZXJuYW5kZXptZW5kaWV0YTdAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwibWF0cmljdWxhIjoiMjAxODJpdGkwMTEifQ.RiZIVi2lSu6MwG02nth9_YrhvIcz1WqRVa_W43TNOu0"
+export const tokenALumno = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTZmNzY5MGVmMDFhZTU0ZTcwMDAwMDIiLCJleHAiOjE2MzQ2OTUzODk2NjQsInVzZXJuYW1lIjoiQ2VzYXIgTGltYSBJcGF0emkiLCJlbWFpbCI6ImNlc2FyQGdtYWlsLmNvbSIsInJvbGUiOiJBbHVtbm8iLCJtYXRyaWN1bGEiOiIyMDE4Mml0aTA5MSJ9.ss2kjgkp_GV7DgGl1Rim943HeBaGWgBlV_7dYUi5FTE"

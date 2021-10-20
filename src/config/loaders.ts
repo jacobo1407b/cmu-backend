@@ -15,8 +15,8 @@ export default function useLoaders(app: Application,port:number) {
     require('middleware/passport');
     new Cloud();
     //middleware
-    app.use(helmet());
     app.use(cors());
+    app.use(helmet());
     app.use(morgan('dev'));
     app.use(urlencoded({ extended: true }))
     app.use(json());

@@ -20,8 +20,7 @@ export default class UserQuery extends Hash {
         })
     }
 //si
-    getById(id: string): Promise<User> {
-        console.log(id)
+    getById(id?: string): Promise<User> {
         const text = 'SELECT * FROM df.users WHERE id_usuario = $1'
         const values = [id];
         return new Promise((resolve, reject) => {

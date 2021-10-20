@@ -13,27 +13,27 @@ services:
       - postgres_data:/var/lib/postgresql/data
     network_mode: "host"
   
-  backend:
-    image: jacobo1407b/cmu:v1.0.2
-    container_name: centro-medico-backend
-    restart: on-failure
-    depends_on:
-      - postgres
-    environment:
-      - NODE_ENV=production
-      - DB_NAME=cmu
-      - DB_USER=dev
-      - DB_PASSWORD=1986
-      - DB_HOST=localhost
-      - DB_PORT=5432
-      - SECRET_TOKEN=secret
-      - ALGORITHM_JWT=HS256
-      - PORT=3000
-      - CLOUDINARY_API_KEY=862614298284656
-      - CLOUDINARY_SECRET=3Dgvj0mWYDxsksvckmbNfSzkLBs
-      - CLOUDINARY_CLOUD_NAME=dn30ekshs
-    command: ["./wait.sh", "postgres"]
-    network_mode: "host"
+#  backend:
+#    image: jacobo1407b/cmu:v1.0.2
+#    container_name: centro-medico-backend
+#    restart: on-failure
+#    depends_on:
+#      - postgres
+#    environment:
+#      - NODE_ENV=production
+#      - DB_NAME=cmu
+#      - DB_USER=dev
+#      - DB_PASSWORD=1986
+#      - DB_HOST=localhost
+#      - DB_PORT=5432
+#      - SECRET_TOKEN=secret
+#      - ALGORITHM_JWT=HS256
+#      - PORT=3000
+#      - CLOUDINARY_API_KEY=862614298284656
+#      - CLOUDINARY_SECRET=3Dgvj0mWYDxsksvckmbNfSzkLBs
+#      - CLOUDINARY_CLOUD_NAME=dn30ekshs
+#    command: ["./wait.sh", "postgres"]
+#    network_mode: "host"
 
 volumes:
   postgres_data:

@@ -21,8 +21,9 @@ INSERT INTO df.users (
 
 
 export async function initUser(pg:Pool) {
-    const has = await encryptPassword('1234567890')
-    const values = [mongoid(),
+    const has = await encryptPassword('1234567890');
+    const id = mongoid()
+    const values = [id,
         '20182iti011',
         `${has}`,
         '',
@@ -35,5 +36,5 @@ export async function initUser(pg:Pool) {
         'Admin'
     ]
     await pg.query(text, values);
-    console.log(chalk.blue('INFO: ')+chalk.blue('20182iti011 has been initialize'));
+    console.log(chalk.blue('INFO: ')+chalk.blue('20182iti011 has been initialize with id: '+id));
 }

@@ -57,7 +57,17 @@ export type Solicitud = {
     id_medico?: string,
     id_alumno?: string
 }
-
+export type SolicitudReq = {
+    alumno:User
+    ubicacion: string,
+    causas: string,
+    solicitante: boolean,
+    nombre_solicitante: string | null,
+    fecha: number | Date,
+    id_medico?: string | null,
+    id_alumno?: string,
+    carrera?:Carrera
+}
 export type Re = {
     error: boolean,
     msg: string,

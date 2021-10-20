@@ -53,7 +53,7 @@ describe('API Auth', function () {
     });
 
     it('Should return json as default update user', function (done) {
-        server.put('/api/v1/auth/update-user/616cc5ccdcc8b135ad000001')
+        server.put('/api/v1/auth/update-user/616f76426dcf705499000001')
             .expect('Content-Type', /json/)
             .set('Authorization', token)
             .send(bodyUpdate)

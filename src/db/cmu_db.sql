@@ -55,9 +55,7 @@ CREATE TABLE IF NOT EXISTS df.solicitud_medica
     id_medico varchar(30) NOT NULL,
     fecha TIMESTAMP NOT NULL DEFAULT NOW(),
     id_alumno varchar(30) NOT NULL,
-    PRIMARY KEY (id_solicitud),
-    FOREIGN KEY (id_medico)
-        REFERENCES df.users(id_usuario)
+    PRIMARY KEY (id_solicitud)
 );
 
 CREATE TABLE IF NOT EXISTS df.peticion
