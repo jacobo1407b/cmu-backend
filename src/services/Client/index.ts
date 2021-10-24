@@ -38,6 +38,27 @@ class Client extends Hash {
             })
         });
     }
+
+    getAllAlumnos(): Promise<User[]> {
+       const text = "SELECT matricula,id_usuario,url,nombre,a_paterno,a_materno,correo,genero,carrera,abreviatura,c.id_carrera FROM df.users u JOIN df.carrera c ON u.id_carrera=c.id_carrera WHERE u.role='Alumno'";
+        return new Promise((resolve, reject) => {
+            pg.query(text, function (err, result) {
+                if (err) reject(err)
+                resolve(result.rows);
+            });
+        });
+    }//si
+
+    gerAllEnfermeros(): Promise<User[]> {
+        const text = "SELECT matricula,id_usuario,url,nombre,a_paterno,a_materno,correo,genero FROM df.users WHERE role='Enfermero'";
+        return new Promise((resolve, reject) => {
+            pg.query(text, function (err, result) {
+                if (err) reject(err)
+                resolve(result.rows);
+            });
+        });
+    }//si
+    
 }
 
 export default new Client();

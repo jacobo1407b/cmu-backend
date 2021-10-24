@@ -23,4 +23,16 @@ describe('API client',()=>{
         .send(updatePass)
         .expect(200,done)
     })
+    it('Should return json and 200 status getAllAlumnos',function(done){
+        server.get('/api/v1/client/get-alumnos')
+        .expect('Content-Type', /json/)
+        .set('Authorization', token)
+        .expect(200,done)
+    })
+    it('Sould return Json and 200 status for getEnfermeros',function(done){
+        server.get('/api/v1/client/get-enfermero')
+        .expect('Content-Type', /json/)
+        .set('Authorization', token)
+        .expect(200,done)
+    })
 })

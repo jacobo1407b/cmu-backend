@@ -48,3 +48,29 @@ export async function updatePassword(req: Request, res: Response, next: NextFunc
         res.status(500).json(error)
     }
 }//si
+
+export async function getAllAlumnos(req: Request, res: Response, next: NextFunction) {
+    try {
+        var result = await client.getAllAlumnos();
+        res.status(200).json({
+            error: false,
+            msg: "Lista de alumnos",
+            data: result
+        })
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}//si
+
+export async function getEnfermero(req: Request, res: Response, next: NextFunction) {
+    try {
+        var result = await client.gerAllEnfermeros();
+        res.status(200).json({
+            error: false,
+            msg: "Lista de enfermeros",
+            data: result
+        })
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}//si

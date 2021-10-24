@@ -57,6 +57,10 @@ export type Solicitud = {
     id_medico?: string,
     id_alumno?: string
 }
+export type UpdateAlert = {
+    id_alerta:string,
+    id_enfermero:string,
+}
 export type SolicitudReq = {
     alumno:User
     ubicacion: string,
@@ -65,7 +69,7 @@ export type SolicitudReq = {
     nombre_solicitante: string | null,
     fecha: number | Date,
     id_medico?: string | null,
-    id_alumno?: string,
+    id_alumno: string,
     carrera?:Carrera
 }
 export type Re = {
