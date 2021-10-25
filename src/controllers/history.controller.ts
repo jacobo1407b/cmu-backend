@@ -3,7 +3,8 @@ import history from 'services/History';
 
 export async function getAllHistory(req: Request, res: Response, next: NextFunction){
     try {
-        const allHistory = await history.getAllHistory();
+        const {fechai,fechaf} = req.body;
+        const allHistory = await history.getAllHistory(fechai,fechaf);
         res.status(200).json({
             error:false,
             data:allHistory

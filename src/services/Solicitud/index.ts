@@ -2,7 +2,7 @@ import { Solicitud, SolicitudReq } from '@types';
 import { pg } from 'db/connect';
 const mongoid = require('mongoid-js')
 
-
+const fechaActual = new Date(Date.now());
 class SolicitudService {
 
     createSolicitud(data: SolicitudReq): Promise<Solicitud> {
@@ -13,10 +13,10 @@ class SolicitudService {
         const { fecha, id_alumno } = data;
         if (solicitante) {
             text = 'INSERT INTO df.solicitud_medica(id_solicitud,ubicacion,causa,solicitante,nombre_solicitante,id_medico,fecha,id_alumno)VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-            values = [id, ubicacion, causas, solicitante, nombre_solicitante, '', fecha, id_alumno]
+            values = [id, ubicacion, causas, solicitante, nombre_solicitante, '', new Date(Date.now()), id_alumno]
         } else {
             text = 'INSERT INTO df.solicitud_medica(id_solicitud,ubicacion,causa,solicitante,nombre_solicitante,id_medico,fecha,id_alumno)VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-            values = [id, ubicacion, causas, solicitante, null, '', fecha, id_alumno]
+            values = [id, ubicacion, causas, solicitante, null, '', new Date(Date.now()), id_alumno]
         }
 
         return new Promise((resolve, reject) => {
@@ -32,21 +32,26 @@ class SolicitudService {
         return result.concat(resNo);
     }
     private getSolicitudesNoAtendidas(): Promise<Solicitud[]> {
+        const hoy = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate()}`);
+        const mañana = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate() + 1}`);
+        const and = `AND s.fecha>=$1 AND s.fecha<=$2`;
         const fields = "id_solicitud,ubicacion,causa,estado,nombre_solicitante,CONCAT(u.nombre,' ',u.a_paterno,' ',u.a_materno) AS alumno";
-        const text = `SELECT ${fields} FROM df.solicitud_medica s JOIN df.users u ON s.id_alumno=u.id_usuario WHERE s.estado=false`
+        const text = `SELECT ${fields} FROM df.solicitud_medica s JOIN df.users u ON s.id_alumno=u.id_usuario WHERE s.estado=false ${and}`
         return new Promise((resolve, reject) => {
-            pg.query(text, function (err, result) {
-                console.log(err)
+            pg.query(text, [hoy, mañana], function (err, result) {
                 if (err) reject(err);
                 resolve(result.rows)
             });
         });
     }
     private getAllSolicitudesAtendidas(): Promise<Solicitud[]> {
+        const hoy = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate()}`);
+        const mañana = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate() + 1}`);
+        const and = `AND s.fecha>=$1 AND s.fecha<=$2`;
         const fields = "id_solicitud,ubicacion,causa,estado,nombre_solicitante,CONCAT(a.nombre,' ',a.a_paterno,' ',a.a_materno) AS alumno, CONCAT(e.nombre,' ',e.a_paterno,' ',e.a_materno) AS enfermero,e.url img_enfermero";
-        let text = `SELECT ${fields} FROM df.solicitud_medica s JOIN df.users a ON s.id_alumno=a.id_usuario JOIN df.users e ON s.id_medico=e.id_usuario WHERE s.estado=true`;
+        let text = `SELECT ${fields} FROM df.solicitud_medica s JOIN df.users a ON s.id_alumno=a.id_usuario JOIN df.users e ON s.id_medico=e.id_usuario WHERE s.estado=true ${and}`;
         return new Promise((resolve, reject) => {
-            pg.query(text, function (err, result) {
+            pg.query(text, [hoy, mañana], function (err, result) {
                 if (err) reject(err);
                 resolve(result.rows)
             });
@@ -84,7 +89,7 @@ class SolicitudService {
             });
         });
     }
-    
+
 }
 
 export default new SolicitudService();

@@ -6,5 +6,5 @@ const router = express.Router();
 
 
 /**SI*/router.get('/all',middlewares.ensureAuthenticatedAdmin,getAllHistory);
-  router.get('/alumno',middlewares.ensureAuthenticated,getHistoryAlumno);
+/**SI*/router.get('/alumno',middlewares.ensureAuthenticated,getHistoryAlumno);
  export default router;
