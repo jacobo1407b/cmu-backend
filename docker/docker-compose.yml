@@ -14,7 +14,7 @@ services:
     network_mode: "host"
 # cambiar   postgresql 2 por postgresql
 #  backend:
-#    image: jacobo1407b/cmu:v1.0.3
+#    image: jacobo1407b/cmu:v1.0.4-dev
 #    container_name: centro-medico-backend
 #    restart: on-failure
 #    depends_on:
@@ -28,7 +28,7 @@ services:
 #      - DB_PORT=5432
 #      - SECRET_TOKEN=secret
 #      - ALGORITHM_JWT=HS256
-#      - PORT=3000
+#      - PORT=3001
 #      - CLOUDINARY_API_KEY=862614298284656
 #      - CLOUDINARY_SECRET=3Dgvj0mWYDxsksvckmbNfSzkLBs
 #      - CLOUDINARY_CLOUD_NAME=dn30ekshs
