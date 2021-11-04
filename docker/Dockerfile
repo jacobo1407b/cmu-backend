@@ -17,5 +17,5 @@ COPY ./src/db/initSchema.sql ./build/db/
 COPY --from=builder node_modules/ ./node_modules
 
 EXPOSE 3000
-ENTRYPOINT [ "yarn", "start:dev"]
-CMD [ "yarn start:dev" ]
+ENTRYPOINT [ "yarn", "start"]
+CMD [ "yarn start" ]

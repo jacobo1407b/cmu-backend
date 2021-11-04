@@ -2,6 +2,19 @@ import { Request, Response, NextFunction } from 'express';
 import client from 'services/Client';
 import user from 'services/User/user.service';
 
+
+export async function deleteUser(req: Request, res: Response, next: NextFunction) {
+    try {
+        const { id } = req.params;
+        const result = await client.deleteUser(id);
+        res.status(200).json({
+            error:result,
+            msg: 'Usuario eliminado correctamente'
+        });
+    } catch (error) {
+        res.status(500).json(error);
+    }
+}//si
 export async function updateMatricula(req: Request, res: Response, next: NextFunction) {
     try {
         var id: string = req.params.id;

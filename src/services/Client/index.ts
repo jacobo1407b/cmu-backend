@@ -17,6 +17,16 @@ class Client extends Hash {
         });
     }
 
+    deleteUser(id:string):Promise<boolean>{
+        const text = 'DELETE FROM df.users WHERE id_usuario=$1';
+        const values = [id];
+        return new Promise((resolve,reject)=>{
+            pg.query(text,values,function(err,result){
+                if (err) reject(err)
+                resolve(true);
+            })
+        });
+    }
     async updatePassword(password: string, id: string): Promise<boolean> {
         const hash = await this.encryptPassword(password);
         const text: string = 'UPDATE df.users SET password=$1 WHERE id_usuario=$2 RETURNING *';
