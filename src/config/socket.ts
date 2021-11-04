@@ -1,6 +1,6 @@
 import WebSocket from 'ws';
-import {ALERTA,UPDATE_ALERTA} from './events';
-import {SolicitudReq,UpdateAlert} from '@types';
+import { ALERTA, UPDATE_ALERTA } from './events';
+import { SolicitudReq, UpdateAlert } from '@types';
 import solicitud from 'services/Solicitud';
 import user from 'services/User/user.service';
 import carrera from 'services/Carrera';
@@ -12,12 +12,12 @@ export default function createSocket(app: any, server: any) {
         /**
          * Funcion que los alumnos utilizaran para enviar alertas 
          */
-        
+        //socket.emit(UPDATE_ALERTA);
         socket.on(ALERTA, async (data: SolicitudReq) => {
             var carr;
             await solicitud.createSolicitud(data);
             const alum = await user.getById(data?.id_alumno);
-            if(alum.id_carrera){
+            if (alum.id_carrera) {
                 carr = await carrera.getCarreraId(alum.id_carrera);
                 data.carrera = carr
                 delete alum.id_carrera;
@@ -25,22 +25,22 @@ export default function createSocket(app: any, server: any) {
             delete alum.password;
             data.alumno = alum
             //emitir a enfermeros la alerta
-            socket.emit(ALERTA,data)
+            io.emit(ALERTA, data)
             //actualizar las solicitudes
             const sol = await solicitud.getAll();
-            socket.emit(UPDATE_ALERTA, sol);
+            io.emit(UPDATE_ALERTA, sol);
         })
-        
+
         /**
          * Funcion que los enfermeros utilizaran para actualizar el estatus de la alerta
          * (y de paso actualizar quien la atendio)
          */
 
         socket.on(UPDATE_ALERTA, async (data: UpdateAlert) => {
-            const {id_alerta,id_enfermero} = data;
-            await solicitud.atendidaUpdate(id_enfermero,id_alerta);
+            const { id_alerta, id_enfermero } = data;
+            await solicitud.atendidaUpdate(id_enfermero, id_alerta);
             const sol = await solicitud.getAll();
-            socket.emit(UPDATE_ALERTA, sol);
+            io.emit(UPDATE_ALERTA, sol);
         })
     });
 }
