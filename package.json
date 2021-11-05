@@ -8,7 +8,7 @@
         "start:dev": "NODE_ENV=production yarn init:pre && yarn start",
         "dev": "NODE_ENV=development NODE_PATH=./src nodemon src/server.ts",
         "build": "rm -rf build/  && tsc",
-        "init-db": "NODE_PATH=./src node src/db/index.ts",
+        "init-db": "NODE_PATH=./src ts-node src/db/index.ts",
         "init:pre": "NODE_PATH=./build node build/db/index.js",
         "eslint": "eslint",
         "test": "NODE_ENV=test NODE_PATH=./src jest --detectOpenHandles"

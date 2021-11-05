@@ -14,6 +14,7 @@ COPY --from=builder package.json tsconfig.json yarn.lock ./
 COPY --from=builder build/ ./build
 COPY ./src/db/cmu_db.sql  ./build/db/
 COPY ./src/db/initSchema.sql ./build/db/
+COPY ./src/db/carreras.sql ./build/db/
 COPY --from=builder node_modules/ ./node_modules
 
 EXPOSE 3000

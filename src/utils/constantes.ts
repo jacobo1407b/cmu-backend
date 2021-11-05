@@ -22,7 +22,7 @@ export const bodyAlumno = {
     "a_materno": "Ipatzi",
     "genero": "Masculino",
     "correo": "cesar@gmail.com",
-    "id_carrera": "6168e3e908acb90027000001"
+    "id_carrera": "6168e3e908acb90027000105"
 }
 
 export const bodyEnfermero = {
@@ -44,5 +44,5 @@ export const bodyUpdate = {
     "id_carrera": null
 }
 //616f76426dcf705499000001
-export const token = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTcxYTc3MWFjYWM1YTAwMjcwMDAwMDEiLCJleHAiOjE2MzQ5NDkwODUyNTAsInVzZXJuYW1lIjoiSmFjb2JvIFJvZHJpZ28gSGVybmFuZGV6IE1lbmRpZXRhIiwiZW1haWwiOiJqYWNvYm9oZXJuYW5kZXptZW5kaWV0YTdAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwibWF0cmljdWxhIjoiMjAxODJpdGkwMTEifQ.256m0L40XzNXc0x08jtDvoVFCrlnOjbITIgsjYgd-yQ"
+export const token = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTg0OGJiZTAxNWRlNTgwYzMwMDAwMDEiLCJleHAiOjE2MzYwNzc0ODQ1MzYsInVzZXJuYW1lIjoiSmFjb2JvIEhlcm5hbmRleiBNZW5kaWV0YSIsImVtYWlsIjoiamFjb2JvaGVybmFuZGV6bWVuZGlldGE3QGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsIm1hdHJpY3VsYSI6IjIwMTgyaXRpMDExIn0.hIJ-9T-4ByUURoKYcHa9qoYtcxC9LAvyfwrBqF0jD7M"
 export const tokenALumno = "BEARER eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MTZmNzY5MGVmMDFhZTU0ZTcwMDAwMDIiLCJleHAiOjE2MzQ2OTUzODk2NjQsInVzZXJuYW1lIjoiQ2VzYXIgTGltYSBJcGF0emkiLCJlbWFpbCI6ImNlc2FyQGdtYWlsLmNvbSIsInJvbGUiOiJBbHVtbm8iLCJtYXRyaWN1bGEiOiIyMDE4Mml0aTA5MSJ9.ss2kjgkp_GV7DgGl1Rim943HeBaGWgBlV_7dYUi5FTE"

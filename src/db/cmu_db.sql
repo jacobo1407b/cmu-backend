@@ -18,7 +18,7 @@ END$$;
 CREATE TABLE IF NOT EXISTS df.carrera
 (
     id_carrera varchar(30) NOT NULL,
-    carrera varchar(50) NOT NULL,
+    carrera varchar(500) NOT NULL,
     abreviatura varchar(10) NOT NULL,
     PRIMARY KEY (id_carrera)
 );

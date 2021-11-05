@@ -2,7 +2,7 @@ import { Pool } from 'pg';
 import chalk from 'chalk';
 import { initDB, schema } from './init';
 import { queryClear } from './clear-db';
-import { text, values } from './init-carreras';
+import { text } from './init-carreras';
 import {initUser} from './init-user';
 import { config } from 'dotenv';
 
@@ -26,7 +26,7 @@ pg.query(schema).then(() => {
         pg.query(queryClear).then(res => {
             console.log(chalk.blue('INFO: ') + 'The database has been cleared');
             pg
-                .query(text, values)
+                .query(text)
                 .then(res => {
                     console.log(chalk.blue('INFO: ') + 'df.carreras has been initialize');
                     initUser(pg)
