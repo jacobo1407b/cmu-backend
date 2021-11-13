@@ -20,7 +20,7 @@ export default function createSocket(app: any, server: any) {
             if (alum.id_carrera) {
                 carr = await carrera.getCarreraId(alum.id_carrera);
                 data.carrera = carr
-                delete alum.id_carrera;
+                delete alum?.id_carrera;
             }
             delete alum.password;
             data.alumno = alum

@@ -6,6 +6,7 @@ const fechaActual = new Date(Date.now());
 class SolicitudService {
 
     createSolicitud(data: SolicitudReq): Promise<Solicitud> {
+        const hoy = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate()}`);
         var text: string
         let id = mongoid()
         var values: any[];
@@ -13,10 +14,10 @@ class SolicitudService {
         const { fecha, id_alumno } = data;
         if (solicitante) {
             text = 'INSERT INTO df.solicitud_medica(id_solicitud,ubicacion,causa,solicitante,nombre_solicitante,id_medico,fecha,id_alumno)VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-            values = [id, ubicacion, causas, solicitante, nombre_solicitante, '', new Date(Date.now()), id_alumno]
+            values = [id, ubicacion, causas, solicitante, nombre_solicitante, '', hoy, id_alumno]
         } else {
             text = 'INSERT INTO df.solicitud_medica(id_solicitud,ubicacion,causa,solicitante,nombre_solicitante,id_medico,fecha,id_alumno)VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *';
-            values = [id, ubicacion, causas, solicitante, null, '', new Date(Date.now()), id_alumno]
+            values = [id, ubicacion, causas, solicitante, null, '', hoy, id_alumno]
         }
 
         return new Promise((resolve, reject) => {
@@ -28,7 +29,7 @@ class SolicitudService {
     }//si
     async getAll() {
         const result = await this.getAllSolicitudesAtendidas();
-        const resNo = await this.getSolicitudesNoAtendidas()
+        const resNo = await this.getSolicitudesNoAtendidas();
         return result.concat(resNo);
     }
     private getSolicitudesNoAtendidas(): Promise<Solicitud[]> {
