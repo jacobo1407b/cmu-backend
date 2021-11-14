@@ -1,5 +1,5 @@
 import { pg } from 'db/connect';
-import { Solicitud, SolicitudReq } from '@types';
+import { Solicitud } from '@types';
 
 class HistoryService{
 
@@ -14,7 +14,6 @@ class HistoryService{
             text=`SELECT ${conact} FROM df.solicitud_medica s JOIN df.users e ON s.id_medico=e.id_usuario WHERE s.fecha>=$1 AND s.fecha<=$2`;
             return new Promise((resolve,reject)=>{
                 pg.query(text,[fechaIn,fechaFi],function(err,result){
-                    console.log(err)
                     if(err)reject(err);
                     resolve(result.rows)
                 });
@@ -22,7 +21,6 @@ class HistoryService{
         }else{
             return new Promise((resolve,reject)=>{
                 pg.query(text,function(err,result){
-                    console.log(err)
                     if(err)reject(err);
                     resolve(result.rows)
                 });
