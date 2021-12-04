@@ -48,6 +48,8 @@ class SolicitudService {
     private getAllSolicitudesAtendidas(): Promise<Solicitud[]> {
         const hoy = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate()}`);
         const mañana = new Date(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate() + 1}`);
+        console.log(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate()}`);
+        console.log(`${fechaActual.getFullYear()}-${fechaActual.getMonth() + 1}-${fechaActual.getDate() + 1}`);
         const and = `AND s.fecha>=$1 AND s.fecha<=$2`;
         const fields = "id_solicitud,ubicacion,causa,estado,nombre_solicitante,CONCAT(a.nombre,' ',a.a_paterno,' ',a.a_materno) AS alumno, CONCAT(e.nombre) AS enfermero_nombre,CONCAT(e.a_paterno,' ',e.a_materno) AS enfermero_apellido,e.url img_enfermero";
         let text = `SELECT ${fields} FROM df.solicitud_medica s JOIN df.users a ON s.id_alumno=a.id_usuario JOIN df.users e ON s.id_medico=e.id_usuario WHERE s.estado=true ${and}`;
